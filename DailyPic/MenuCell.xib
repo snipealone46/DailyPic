@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Vfa-FV-rye" customClass="MenuCell" customModule="DailyPic" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Vfa-FV-rye" id="TUQ-NP-B4t">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="49.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="O5f-fa-GAE">
+                        <rect key="frame" x="5" y="5" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="ig6-v8-wfr"/>
+                            <constraint firstAttribute="width" constant="40" id="vOq-Qj-5o7"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ZV-dD-aOD">
+                        <rect key="frame" x="50" y="10" width="150" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="150" id="094-4T-4OI"/>
+                            <constraint firstAttribute="height" constant="30" id="UYe-yw-Fna"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="20"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Fe-j1-mnk">
+                        <rect key="frame" x="205" y="15" width="75" height="20.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="75" id="cEi-BO-nkg"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="B2L-03-I0z">
+                        <rect key="frame" x="285" y="5" width="35" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="35" id="O3m-aj-soU"/>
+                            <constraint firstAttribute="height" constant="40" id="Qg9-cw-Mfq"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="B2L-03-I0z" secondAttribute="trailing" id="469-2P-B56"/>
+                    <constraint firstItem="6ZV-dD-aOD" firstAttribute="leading" secondItem="O5f-fa-GAE" secondAttribute="trailing" constant="5" id="IGn-Qa-uCP"/>
+                    <constraint firstItem="O5f-fa-GAE" firstAttribute="leading" secondItem="TUQ-NP-B4t" secondAttribute="leading" constant="5" id="pJs-ie-HRl"/>
+                    <constraint firstItem="B2L-03-I0z" firstAttribute="top" secondItem="TUQ-NP-B4t" secondAttribute="top" constant="5" id="pag-uv-qQc"/>
+                    <constraint firstItem="O5f-fa-GAE" firstAttribute="top" secondItem="TUQ-NP-B4t" secondAttribute="top" constant="5" id="rTP-hf-7lQ"/>
+                    <constraint firstItem="7Fe-j1-mnk" firstAttribute="top" secondItem="TUQ-NP-B4t" secondAttribute="top" constant="15" id="vD4-za-MN7"/>
+                    <constraint firstItem="B2L-03-I0z" firstAttribute="leading" secondItem="7Fe-j1-mnk" secondAttribute="trailing" constant="5" id="vIT-6o-XK7"/>
+                    <constraint firstItem="6ZV-dD-aOD" firstAttribute="top" secondItem="TUQ-NP-B4t" secondAttribute="top" constant="10" id="ylN-Fr-Ehk"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="listCounter" destination="7Fe-j1-mnk" id="Hol-sf-6d6"/>
+                <outlet property="listIcon" destination="O5f-fa-GAE" id="uzd-jg-Slp"/>
+                <outlet property="listLabel" destination="6ZV-dD-aOD" id="6qX-QG-N19"/>
+                <outlet property="listMoreIndicator" destination="B2L-03-I0z" id="47G-LX-74v"/>
+            </connections>
+            <point key="canvasLocation" x="-231" y="508"/>
+        </tableViewCell>
+    </objects>
+</document>
