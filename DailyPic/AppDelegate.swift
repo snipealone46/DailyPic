@@ -7,15 +7,56 @@
 //
 
 import UIKit
+import CoreData
 
+struct segueIdentifiers {
+    static let createNewEntry = "createNewEntry"
+    static let Timeline = "Timeline"
+    static let menuContainer = "menuContainer"
+    static let TimelineDetail = "TimelineDetail"
+    static let addNewEntry = "addNewEntry"
+    static let TimelineDetailContainer = "TimelineDetailContainer"
+}
+
+let MyManagedObjectContextSaveDidFailNotification = "MyManagedObjectContextSaveDidFailNotification"
+func fatalCoreDataError(error: ErrorType) {
+    print("*** Fatal error: \(error)")
+    NSNotificationCenter.defaultCenter().postNotificationName(MyManagedObjectContextSaveDidFailNotification, object: nil)
+}
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+//Load Core Data
+    lazy var managedObjectContext: NSManagedObjectContext = {
+        guard let modelURL = NSBundle.mainBundle().URLForResource("DataModel", withExtension: "momd") else {
+            fatalError("Could not find data model in app bundle")
+        }
+        guard let model = NSManagedObjectModel(contentsOfURL: modelURL)
+            else { fatalError("Error initializing model from: \(modelURL)")
+        }
+        let urls = NSFileManager.defaultManager().URLsForDirectory( .DocumentDirectory, inDomains: .UserDomainMask)
+        let documentsDirectory = urls[0]
+        print("CoreData URL is: \(documentsDirectory)")
+        let storeURL = documentsDirectory.URLByAppendingPathComponent("DataStore.sqlite")
+        do {
+            let coordinator = NSPersistentStoreCoordinator(managedObjectModel: model)
+            try coordinator.addPersistentStoreWithType(NSSQLiteStoreType,configuration: nil, URL: storeURL, options: nil)
+            let context = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
+            context.persistentStoreCoordinator = coordinator
+            return context }
+            catch {
+                fatalError("Error adding persistent store at \(storeURL): \(error)") }
+        }()
+    
     var window: UIWindow?
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        //pass core data to main view
+        let navigationController = window!.rootViewController as! UINavigationController
+        let controller = navigationController.viewControllers[0] as! MenuViewController
+        controller.managedObjectContext = managedObjectContext
+                
+        listenForFatalCoreDataNotifications()
         return true
     }
 
@@ -39,6 +80,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    func listenForFatalCoreDataNotifications() { // 1
+        NSNotificationCenter.defaultCenter().addObserverForName( MyManagedObjectContextSaveDidFailNotification, object: nil, queue: NSOperationQueue.mainQueue(),
+        usingBlock: { notification in
+        // 2
+        let alert = UIAlertController(title: "Internal Error", message: "There was a fatal error in the app and it cannot continue.\n\n" + "Press OK to terminate the app. Sorry for the inconvenience.", preferredStyle: .Alert)
+        // 3
+        let action = UIAlertAction(title: "OK", style: .Default) { _ in
+        let exception = NSException(
+        name: NSInternalInconsistencyException,
+        reason: "Fatal Core Data error", userInfo: nil)
+        exception.raise() }
+        alert.addAction(action)
+        // 4
+        self.viewControllerForShowingAlert().presentViewController(
+            alert, animated: true, completion: nil)
+        }) }
+    // 5
+    func viewControllerForShowingAlert() -> UIViewController {
+            let rootViewController = self.window!.rootViewController!
+            if let presentedViewController = rootViewController.presentedViewController { return presentedViewController
+        } else {
+            return rootViewController
+            }
     }
 
 

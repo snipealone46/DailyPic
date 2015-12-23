@@ -20,6 +20,13 @@
 		071A04851C290CF60074ABFD /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071A04841C290CF60074ABFD /* TimelineViewController.swift */; };
 		071A04871C2910C60074ABFD /* TimelineDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071A04861C2910C60074ABFD /* TimelineDetailViewController.swift */; };
 		071A04891C2911050074ABFD /* TimelineDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071A04881C2911050074ABFD /* TimelineDetailTableViewController.swift */; };
+		07B2EDF91C2A5B82007811CD /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 07B2EDF71C2A5B82007811CD /* DataModel.xcdatamodeld */; };
+		07B2EDFC1C2A6528007811CD /* Entry+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B2EDFA1C2A6528007811CD /* Entry+CoreDataProperties.swift */; };
+		07B2EDFD1C2A6528007811CD /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B2EDFB1C2A6528007811CD /* Entry.swift */; };
+		07B2EDFF1C2A7DC1007811CD /* TimelineDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07B2EDFE1C2A7DC1007811CD /* TimelineDetailCell.xib */; };
+		07B2EE011C2A842B007811CD /* TimelineDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B2EE001C2A842B007811CD /* TimelineDetailCell.swift */; };
+		07B2EE051C2AB3CC007811CD /* HudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B2EE041C2AB3CC007811CD /* HudView.swift */; };
+		07B2EE071C2AEF4D007811CD /* LoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07B2EE061C2AEF4D007811CD /* LoadingCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +45,13 @@
 		071A04841C290CF60074ABFD /* TimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
 		071A04861C2910C60074ABFD /* TimelineDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineDetailViewController.swift; sourceTree = "<group>"; };
 		071A04881C2911050074ABFD /* TimelineDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineDetailTableViewController.swift; sourceTree = "<group>"; };
+		07B2EDF81C2A5B82007811CD /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		07B2EDFA1C2A6528007811CD /* Entry+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Entry+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		07B2EDFB1C2A6528007811CD /* Entry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
+		07B2EDFE1C2A7DC1007811CD /* TimelineDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimelineDetailCell.xib; sourceTree = "<group>"; };
+		07B2EE001C2A842B007811CD /* TimelineDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineDetailCell.swift; sourceTree = "<group>"; };
+		07B2EE041C2AB3CC007811CD /* HudView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HudView.swift; sourceTree = "<group>"; };
+		07B2EE061C2AEF4D007811CD /* LoadingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +68,8 @@
 		071A045C1C29074C0074ABFD = {
 			isa = PBXGroup;
 			children = (
+				07B2EDFA1C2A6528007811CD /* Entry+CoreDataProperties.swift */,
+				07B2EDFB1C2A6528007811CD /* Entry.swift */,
 				071A04671C29074C0074ABFD /* DailyPic */,
 				071A04661C29074C0074ABFD /* Products */,
 			);
@@ -84,6 +100,11 @@
 				071A04841C290CF60074ABFD /* TimelineViewController.swift */,
 				071A04861C2910C60074ABFD /* TimelineDetailViewController.swift */,
 				071A04881C2911050074ABFD /* TimelineDetailTableViewController.swift */,
+				07B2EDF71C2A5B82007811CD /* DataModel.xcdatamodeld */,
+				07B2EDFE1C2A7DC1007811CD /* TimelineDetailCell.xib */,
+				07B2EE001C2A842B007811CD /* TimelineDetailCell.swift */,
+				07B2EE041C2AB3CC007811CD /* HudView.swift */,
+				07B2EE061C2AEF4D007811CD /* LoadingCell.xib */,
 			);
 			path = DailyPic;
 			sourceTree = "<group>";
@@ -147,7 +168,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07B2EE071C2AEF4D007811CD /* LoadingCell.xib in Resources */,
 				071A04731C29074C0074ABFD /* LaunchScreen.storyboard in Resources */,
+				07B2EDFF1C2A7DC1007811CD /* TimelineDetailCell.xib in Resources */,
 				071A04701C29074C0074ABFD /* Assets.xcassets in Resources */,
 				071A04811C2908E80074ABFD /* TimelineCell.xib in Resources */,
 				071A047D1C2908D90074ABFD /* MenuCell.xib in Resources */,
@@ -166,10 +189,15 @@
 				071A04871C2910C60074ABFD /* TimelineDetailViewController.swift in Sources */,
 				071A046B1C29074C0074ABFD /* MenuViewController.swift in Sources */,
 				071A04891C2911050074ABFD /* TimelineDetailTableViewController.swift in Sources */,
+				07B2EDFC1C2A6528007811CD /* Entry+CoreDataProperties.swift in Sources */,
+				07B2EE011C2A842B007811CD /* TimelineDetailCell.swift in Sources */,
 				071A04831C2909430074ABFD /* MenuTableViewController.swift in Sources */,
+				07B2EDFD1C2A6528007811CD /* Entry.swift in Sources */,
+				07B2EDF91C2A5B82007811CD /* DataModel.xcdatamodeld in Sources */,
 				071A04691C29074C0074ABFD /* AppDelegate.swift in Sources */,
 				071A047C1C2908D90074ABFD /* MenuCell.swift in Sources */,
 				071A04851C290CF60074ABFD /* TimelineViewController.swift in Sources */,
+				07B2EE051C2AB3CC007811CD /* HudView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,8 +345,22 @@
 				071A04791C29074C0074ABFD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		07B2EDF71C2A5B82007811CD /* DataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				07B2EDF81C2A5B82007811CD /* DataModel.xcdatamodel */,
+			);
+			currentVersion = 07B2EDF81C2A5B82007811CD /* DataModel.xcdatamodel */;
+			path = DataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 071A045D1C29074C0074ABFD /* Project object */;
 }

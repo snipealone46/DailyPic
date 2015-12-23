@@ -7,32 +7,77 @@
 //
 
 import UIKit
+import CoreData
+import Dispatch
 
 class TimelineDetailViewController: UIViewController {
+//MARK: - outlets and variables
+    var managedObjectContext: NSManagedObjectContext!
+    weak var container: TimelineDetailTableViewController!
     var newEntry = false
+    var date = NSDate()
+    var savedEntry = false
+    var entryToEdit: Entry!
     @IBOutlet weak var doneOrEditButton: UIBarButtonItem!
     @IBAction func doneOrEdit(sender: AnyObject) {
         if newEntry {
-            dismissViewControllerAnimated(true, completion: nil)
+            dismissAndSave()
         } else {
             editMode()
-            
         }
     }
-    weak var container: TimelineDetailTableViewController!
+    func dismissAndSave(){
+            let hudView = HudView.hudInView(navigationController!.view, animated: true)
+            //saving entry to core data
+            let entry: Entry?
+            if let temp = entryToEdit {
+                hudView.text = "Updated"
+                entry = savedEntry ? nil : temp
+            } else {
+                hudView.text = "Saved"
+                entry = savedEntry ? nil : (NSEntityDescription.insertNewObjectForEntityForName("Entry", inManagedObjectContext: managedObjectContext) as! Entry)
+            }
+        if !savedEntry {
+            entry!.text = container.textView.text
+            entry!.date = container.date
+        
+            do {
+                try managedObjectContext.save()
+            } catch {
+                fatalError("Error: \(error)")
+            }
+            savedEntry = true
+        }
+            newEntry = false
+            HudView.afterDelay(0.6) {
+                hudView.dismissHudView()
+                self.navigationController?.popViewControllerAnimated(true)
+            }
+    }
+    
+//MARK: - built in methods
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         if newEntry {
             editMode()
         } else {
             viewMode()
+            container.textView.text = entryToEdit.text
+            container.date = entryToEdit.date
         }
     }
+    override func viewWillDisappear(animated: Bool) {
+            super.viewWillDisappear(animated)
+            if container.textView.editable {
+                dismissAndSave()
+            }
+    }
     deinit {
+
         print("detail is gone")
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "TimelineDetailContainer" {
+        if segue.identifier == segueIdentifiers.TimelineDetailContainer {
             container = segue.destinationViewController as! TimelineDetailTableViewController
             container.doneButtonDelegate = self
         }
