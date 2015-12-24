@@ -15,15 +15,20 @@ class TimelineDetailViewController: UIViewController {
     var managedObjectContext: NSManagedObjectContext!
     weak var container: TimelineDetailTableViewController!
     var newEntry = false
+    var keyboardIsUp = false
     var date = NSDate()
     var savedEntry = false
     var entryToEdit: Entry!
     @IBOutlet weak var doneOrEditButton: UIBarButtonItem!
     @IBAction func doneOrEdit(sender: AnyObject) {
-        if newEntry {
-            dismissAndSave()
+        if keyboardIsUp {
+        container.textView.resignFirstResponder()
         } else {
-            editMode()
+            if newEntry {
+                dismissAndSave()
+            } else {
+                editMode()
+            }
         }
     }
     func dismissAndSave(){
@@ -79,12 +84,12 @@ class TimelineDetailViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == segueIdentifiers.TimelineDetailContainer {
             container = segue.destinationViewController as! TimelineDetailTableViewController
-            container.doneButtonDelegate = self
+            container.delegate = self
         }
     }
     
     func editMode() {
-        doneOrEditButton.title = "Done"
+        doneOrEditButton.title = "Save"
         container.textView.editable = true
         container.textView.becomeFirstResponder()
         doneOrEditButton.enabled = false
@@ -98,8 +103,13 @@ class TimelineDetailViewController: UIViewController {
     }
 }
 
-extension TimelineDetailViewController: TimelineDetailDoneButtonDelegate {
+extension TimelineDetailViewController: TimelineDetailDelegate {
     func updateButton(shouldEnable: Bool) {
         doneOrEditButton.enabled = shouldEnable ? true : false
+    
+    }
+    func keyboardShow(adjustScreen: Bool) {
+            keyboardIsUp = adjustScreen ? true : false
+            doneOrEditButton.title = keyboardIsUp ? "Done" : "Save"
     }
 }

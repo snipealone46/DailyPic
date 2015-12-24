@@ -8,8 +8,9 @@
 
 import UIKit
 
-protocol TimelineDetailDoneButtonDelegate: class{
+protocol TimelineDetailDelegate: class{
     func updateButton(shouldEnable: Bool)
+    func keyboardShow(adjustScreen: Bool)
 }
 
 class TimelineDetailTableViewController: UITableViewController {
@@ -19,7 +20,7 @@ class TimelineDetailTableViewController: UITableViewController {
     var date:NSDate!
     
     @IBOutlet weak var textView: UITextView!
-    weak var doneButtonDelegate: TimelineDetailDoneButtonDelegate?
+    weak var delegate: TimelineDetailDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,10 +81,17 @@ extension TimelineDetailTableViewController: UITextViewDelegate {
         let oldText: NSString = textView.text
         let newText: NSString = oldText.stringByReplacingCharactersInRange(range, withString: text)
         if newText.length > 0 {
-            doneButtonDelegate?.updateButton(true)
+            delegate?.updateButton(true)
         } else {
-            doneButtonDelegate?.updateButton(false)
+            delegate?.updateButton(false)
         }
         return true
     }
+    func textViewDidBeginEditing(textView: UITextView) {
+        delegate?.keyboardShow(true)
+    }
+    func textViewDidEndEditing(textView: UITextView) {
+        delegate?.keyboardShow(false)
+    }
+    
 }
