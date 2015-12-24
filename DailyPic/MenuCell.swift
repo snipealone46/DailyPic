@@ -18,6 +18,8 @@ class MenuCell: UITableViewCell {
 //MARK: - built in functions
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.contentView.layer.cornerRadius = 15
+        self.contentView.clipsToBounds = true
         // Initialization code
     }
 

@@ -24,12 +24,23 @@ class TimelineCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        photo.layer.cornerRadius = photo.bounds.size.width / 2
+        photo.clipsToBounds = true
+        textView.clipsToBounds = true
+        textView.layer.cornerRadius = 5
+        separatorInset = UIEdgeInsets(top: 0, left: 82, bottom: 0, right: 0)
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    func imageForEntry(entry: Entry) -> UIImage {
+        if entry.hasPhoto, let image = entry.photoImage {
+            return image.resizedImageWithBounds(CGSize(width: 60, height: 60))
+        }
+        return UIImage(named: "No Photo")!
     }
     func updateTimeLabels(date: NSDate) {
         let dateString = dateFormatter.stringFromDate(date)
@@ -44,6 +55,7 @@ class TimelineCell: UITableViewCell {
         textView.text = entry.text
         textView.editable = false
         updateTimeLabels(entry.date)
+        photo.image = imageForEntry(entry)
     }
 
 

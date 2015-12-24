@@ -27,6 +27,8 @@
 		07B2EE011C2A842B007811CD /* TimelineDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B2EE001C2A842B007811CD /* TimelineDetailCell.swift */; };
 		07B2EE051C2AB3CC007811CD /* HudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B2EE041C2AB3CC007811CD /* HudView.swift */; };
 		07B2EE071C2AEF4D007811CD /* LoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07B2EE061C2AEF4D007811CD /* LoadingCell.xib */; };
+		07B2EE091C2BCE20007811CD /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B2EE081C2BCE20007811CD /* Functions.swift */; };
+		07B2EE0B1C2BE339007811CD /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B2EE0A1C2BE339007811CD /* UIImage+Resize.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +54,8 @@
 		07B2EE001C2A842B007811CD /* TimelineDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineDetailCell.swift; sourceTree = "<group>"; };
 		07B2EE041C2AB3CC007811CD /* HudView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HudView.swift; sourceTree = "<group>"; };
 		07B2EE061C2AEF4D007811CD /* LoadingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingCell.xib; sourceTree = "<group>"; };
+		07B2EE081C2BCE20007811CD /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
+		07B2EE0A1C2BE339007811CD /* UIImage+Resize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Resize.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +109,8 @@
 				07B2EE001C2A842B007811CD /* TimelineDetailCell.swift */,
 				07B2EE041C2AB3CC007811CD /* HudView.swift */,
 				07B2EE061C2AEF4D007811CD /* LoadingCell.xib */,
+				07B2EE081C2BCE20007811CD /* Functions.swift */,
+				07B2EE0A1C2BE339007811CD /* UIImage+Resize.swift */,
 			);
 			path = DailyPic;
 			sourceTree = "<group>";
@@ -188,10 +194,12 @@
 				071A04801C2908E80074ABFD /* TimelineCell.swift in Sources */,
 				071A04871C2910C60074ABFD /* TimelineDetailViewController.swift in Sources */,
 				071A046B1C29074C0074ABFD /* MenuViewController.swift in Sources */,
+				07B2EE091C2BCE20007811CD /* Functions.swift in Sources */,
 				071A04891C2911050074ABFD /* TimelineDetailTableViewController.swift in Sources */,
 				07B2EDFC1C2A6528007811CD /* Entry+CoreDataProperties.swift in Sources */,
 				07B2EE011C2A842B007811CD /* TimelineDetailCell.swift in Sources */,
 				071A04831C2909430074ABFD /* MenuTableViewController.swift in Sources */,
+				07B2EE0B1C2BE339007811CD /* UIImage+Resize.swift in Sources */,
 				07B2EDFD1C2A6528007811CD /* Entry.swift in Sources */,
 				07B2EDF91C2A5B82007811CD /* DataModel.xcdatamodeld in Sources */,
 				071A04691C29074C0074ABFD /* AppDelegate.swift in Sources */,

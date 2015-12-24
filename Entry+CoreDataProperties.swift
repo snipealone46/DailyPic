@@ -16,5 +16,5 @@ extension Entry {
 
     @NSManaged var text: String?
     @NSManaged var date: NSDate
-
+    @NSManaged var photoID: NSNumber?
 }

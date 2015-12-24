@@ -34,10 +34,10 @@ class MenuViewController: UIViewController {
             dispatch_async(dispatch_get_main_queue()) {
                 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                 //delete after Delay for production
-                HudView.afterDelay(1){
+//                HudView.afterDelay(1){
                 self.readyToShow()
                 self.container.tableView.reloadData()
-                }
+//                }
                 
                 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             }

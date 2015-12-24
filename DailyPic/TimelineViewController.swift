@@ -54,6 +54,7 @@ class TimelineViewController: UITableViewController {
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             let entry = fetchedResultsController.objectAtIndexPath(indexPath) as! Entry
+            entry.removePhotoFile()
             managedObjectContext.deleteObject(entry)
             do {
                 try managedObjectContext.save()

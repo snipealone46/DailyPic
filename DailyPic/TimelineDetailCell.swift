@@ -14,12 +14,24 @@ private var dateFormatter: NSDateFormatter = {
     formatter.timeStyle = .ShortStyle
     return formatter
 }()
+
+protocol addPhotoDelegate: class {
+    func imagePicker()
+}
 class TimelineDetailCell: UITableViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var stateLabel: UILabel!
+    @IBAction func addPhoto(sender: AnyObject) {
+        if addPhotoButton.enabled{
+        delegate?.imagePicker()
+        }
+    }
+    @IBOutlet weak var addPhotoButton: UIButton!
+    weak var delegate: addPhotoDelegate?
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
