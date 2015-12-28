@@ -69,6 +69,9 @@ class TimelineViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("TimelineCell", forIndexPath: indexPath) as! TimelineCell
         let entry = fetchedResultsController.objectAtIndexPath(indexPath) as! Entry
+//        print("*********************************")
+//        print(entry)
+//        print("*********************************")
         cell.configureForEntry(entry)
         return cell
     }

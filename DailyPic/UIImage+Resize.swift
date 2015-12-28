@@ -17,4 +17,16 @@ extension UIImage {
         
         return newImage
     }
+    class func rectWithColor(color: UIColor, width: CGFloat, height: CGFloat) -> UIImage {
+        let rect = CGRectMake(0, 0, width, height)
+        UIGraphicsBeginImageContext(rect.size)
+        let context = UIGraphicsGetCurrentContext()
+        
+        CGContextSetFillColorWithColor(context, color.CGColor)
+        CGContextFillRect(context, rect)
+        
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
+    }
 }

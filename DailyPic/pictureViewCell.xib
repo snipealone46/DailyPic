@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="pictureCell" rowHeight="118" id="muC-Lq-cpR" customClass="pictureViewCell" customModule="DailyPic" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="447" height="118"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="muC-Lq-cpR" id="TFv-ec-g9H">
+                <rect key="frame" x="0.0" y="0.0" width="447" height="117.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="d1m-Br-SuW">
+                        <rect key="frame" x="5" y="5" width="437" height="108"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ut9-Cn-dID">
+                                <rect key="frame" x="0.0" y="0.0" width="189" height="108"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8XO-wp-zbj">
+                                <rect key="frame" x="194" y="0.0" width="50" height="108"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sqm-im-4aQ">
+                                <rect key="frame" x="249" y="0.0" width="188" height="108"/>
+                            </imageView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="sqm-im-4aQ" firstAttribute="top" secondItem="d1m-Br-SuW" secondAttribute="top" constant="5" id="5nW-YL-tBF"/>
+                            <constraint firstItem="8XO-wp-zbj" firstAttribute="top" secondItem="d1m-Br-SuW" secondAttribute="top" constant="5" id="6X2-gW-Mdd"/>
+                            <constraint firstItem="8XO-wp-zbj" firstAttribute="leading" secondItem="Ut9-Cn-dID" secondAttribute="trailing" constant="5" id="KMp-vG-vuw"/>
+                            <constraint firstAttribute="trailing" secondItem="sqm-im-4aQ" secondAttribute="trailing" id="Obd-zS-lAd"/>
+                            <constraint firstItem="Ut9-Cn-dID" firstAttribute="leading" secondItem="d1m-Br-SuW" secondAttribute="leading" constant="5" id="bTs-q5-vhn"/>
+                            <constraint firstItem="8XO-wp-zbj" firstAttribute="top" secondItem="d1m-Br-SuW" secondAttribute="top" constant="5" id="c1j-9m-t8r"/>
+                            <constraint firstItem="Ut9-Cn-dID" firstAttribute="top" secondItem="d1m-Br-SuW" secondAttribute="top" constant="5" id="f2N-Hf-seN"/>
+                        </constraints>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="d1m-Br-SuW" firstAttribute="leading" secondItem="TFv-ec-g9H" secondAttribute="leading" constant="5" id="0MM-MF-a7m"/>
+                    <constraint firstItem="d1m-Br-SuW" firstAttribute="top" secondItem="TFv-ec-g9H" secondAttribute="top" constant="5" id="83b-k6-qWE"/>
+                    <constraint firstAttribute="trailing" secondItem="d1m-Br-SuW" secondAttribute="trailing" constant="5" id="Ooj-Mp-9OC"/>
+                    <constraint firstAttribute="bottom" secondItem="d1m-Br-SuW" secondAttribute="bottom" constant="4.5" id="hHV-dK-zh5"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="picture_1" destination="Ut9-Cn-dID" id="WKq-J0-yBY"/>
+                <outlet property="picture_2" destination="8XO-wp-zbj" id="YpM-kU-dG2"/>
+                <outlet property="picture_3" destination="sqm-im-4aQ" id="rDs-Tr-oLv"/>
+            </connections>
+            <point key="canvasLocation" x="434.5" y="387"/>
+        </tableViewCell>
+    </objects>
+</document>

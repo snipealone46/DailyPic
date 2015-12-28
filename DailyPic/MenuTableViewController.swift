@@ -85,6 +85,8 @@ class MenuTableViewController: UITableViewController {
         switch indexPath.row {
         case 0:
             segueTo = segueIdentifiers.Timeline
+        case 1:
+            segueTo = segueIdentifiers.PhotoView
         default: break
         }
         delegate?.selectedViewController(segueTo)

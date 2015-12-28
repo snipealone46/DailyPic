@@ -5,6 +5,37 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <scenes>
+        <!--Picture View Controller-->
+        <scene sceneID="P2k-16-LIN">
+            <objects>
+                <tableViewController id="Eoo-Aj-02I" customClass="PictureViewController" customModule="DailyPic" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="kz1-RA-UBp">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="pictureCell" id="Rgi-oH-2SN" customClass="pictureCell">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rgi-oH-2SN" id="Wbu-2S-iOe">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Eoo-Aj-02I" id="2Ri-1J-sFZ"/>
+                            <outlet property="delegate" destination="Eoo-Aj-02I" id="eAZ-4F-AqT"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <segue destination="U73-eH-VTV" kind="show" identifier="editPhotoEntry" id="iJD-3K-Zhf"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E8F-3S-seR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1869" y="80"/>
+        </scene>
         <!--Menu View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -48,6 +79,7 @@
                     <navigationItem key="navigationItem" id="LAi-FA-JqT"/>
                     <connections>
                         <segue destination="iQg-Jj-LYH" kind="show" identifier="Timeline" id="jTE-u9-2n7"/>
+                        <segue destination="Eoo-Aj-02I" kind="show" identifier="PhotoView" id="bbD-vb-mM1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -219,7 +251,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="99.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textView clipsSubviews="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SCW-Wy-chu">
+                                                <textView clipsSubviews="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SCW-Wy-chu">
                                                     <rect key="frame" x="8" y="5" width="584" height="89.5"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -296,6 +328,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="qqT-6D-O1e"/>
-        <segue reference="6Dz-F1-tcP"/>
+        <segue reference="iJD-3K-Zhf"/>
     </inferredMetricsTieBreakers>
 </document>

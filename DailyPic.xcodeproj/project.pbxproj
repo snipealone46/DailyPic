@@ -29,6 +29,9 @@
 		07B2EE071C2AEF4D007811CD /* LoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07B2EE061C2AEF4D007811CD /* LoadingCell.xib */; };
 		07B2EE091C2BCE20007811CD /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B2EE081C2BCE20007811CD /* Functions.swift */; };
 		07B2EE0B1C2BE339007811CD /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B2EE0A1C2BE339007811CD /* UIImage+Resize.swift */; };
+		07B2EE0D1C2C5D4F007811CD /* pictureViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07B2EE0C1C2C5D4F007811CD /* pictureViewCell.xib */; };
+		07B2EE0F1C2C5EE9007811CD /* pictureViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B2EE0E1C2C5EE9007811CD /* pictureViewCell.swift */; };
+		07B2EE111C2C6496007811CD /* PictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B2EE101C2C6496007811CD /* PictureViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +59,9 @@
 		07B2EE061C2AEF4D007811CD /* LoadingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingCell.xib; sourceTree = "<group>"; };
 		07B2EE081C2BCE20007811CD /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		07B2EE0A1C2BE339007811CD /* UIImage+Resize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Resize.swift"; sourceTree = "<group>"; };
+		07B2EE0C1C2C5D4F007811CD /* pictureViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = pictureViewCell.xib; sourceTree = "<group>"; };
+		07B2EE0E1C2C5EE9007811CD /* pictureViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = pictureViewCell.swift; sourceTree = "<group>"; };
+		07B2EE101C2C6496007811CD /* PictureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,24 +98,27 @@
 			children = (
 				071A04681C29074C0074ABFD /* AppDelegate.swift */,
 				071A046F1C29074C0074ABFD /* Assets.xcassets */,
+				07B2EDF71C2A5B82007811CD /* DataModel.xcdatamodeld */,
+				07B2EE081C2BCE20007811CD /* Functions.swift */,
+				07B2EE041C2AB3CC007811CD /* HudView.swift */,
 				071A04741C29074C0074ABFD /* Info.plist */,
 				071A04711C29074C0074ABFD /* LaunchScreen.storyboard */,
+				07B2EE061C2AEF4D007811CD /* LoadingCell.xib */,
 				071A046C1C29074C0074ABFD /* Main.storyboard */,
 				071A047A1C2908D90074ABFD /* MenuCell.swift */,
 				071A047B1C2908D90074ABFD /* MenuCell.xib */,
 				071A04821C2909430074ABFD /* MenuTableViewController.swift */,
 				071A046A1C29074C0074ABFD /* MenuViewController.swift */,
+				07B2EE0E1C2C5EE9007811CD /* pictureViewCell.swift */,
+				07B2EE0C1C2C5D4F007811CD /* pictureViewCell.xib */,
+				07B2EE101C2C6496007811CD /* PictureViewController.swift */,
 				071A047E1C2908E80074ABFD /* TimelineCell.swift */,
 				071A047F1C2908E80074ABFD /* TimelineCell.xib */,
-				071A04841C290CF60074ABFD /* TimelineViewController.swift */,
-				071A04861C2910C60074ABFD /* TimelineDetailViewController.swift */,
-				071A04881C2911050074ABFD /* TimelineDetailTableViewController.swift */,
-				07B2EDF71C2A5B82007811CD /* DataModel.xcdatamodeld */,
-				07B2EDFE1C2A7DC1007811CD /* TimelineDetailCell.xib */,
 				07B2EE001C2A842B007811CD /* TimelineDetailCell.swift */,
-				07B2EE041C2AB3CC007811CD /* HudView.swift */,
-				07B2EE061C2AEF4D007811CD /* LoadingCell.xib */,
-				07B2EE081C2BCE20007811CD /* Functions.swift */,
+				07B2EDFE1C2A7DC1007811CD /* TimelineDetailCell.xib */,
+				071A04881C2911050074ABFD /* TimelineDetailTableViewController.swift */,
+				071A04861C2910C60074ABFD /* TimelineDetailViewController.swift */,
+				071A04841C290CF60074ABFD /* TimelineViewController.swift */,
 				07B2EE0A1C2BE339007811CD /* UIImage+Resize.swift */,
 			);
 			path = DailyPic;
@@ -177,6 +186,7 @@
 				07B2EE071C2AEF4D007811CD /* LoadingCell.xib in Resources */,
 				071A04731C29074C0074ABFD /* LaunchScreen.storyboard in Resources */,
 				07B2EDFF1C2A7DC1007811CD /* TimelineDetailCell.xib in Resources */,
+				07B2EE0D1C2C5D4F007811CD /* pictureViewCell.xib in Resources */,
 				071A04701C29074C0074ABFD /* Assets.xcassets in Resources */,
 				071A04811C2908E80074ABFD /* TimelineCell.xib in Resources */,
 				071A047D1C2908D90074ABFD /* MenuCell.xib in Resources */,
@@ -198,6 +208,8 @@
 				071A04891C2911050074ABFD /* TimelineDetailTableViewController.swift in Sources */,
 				07B2EDFC1C2A6528007811CD /* Entry+CoreDataProperties.swift in Sources */,
 				07B2EE011C2A842B007811CD /* TimelineDetailCell.swift in Sources */,
+				07B2EE111C2C6496007811CD /* PictureViewController.swift in Sources */,
+				07B2EE0F1C2C5EE9007811CD /* pictureViewCell.swift in Sources */,
 				071A04831C2909430074ABFD /* MenuTableViewController.swift in Sources */,
 				07B2EE0B1C2BE339007811CD /* UIImage+Resize.swift in Sources */,
 				07B2EDFD1C2A6528007811CD /* Entry.swift in Sources */,

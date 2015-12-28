@@ -76,6 +76,10 @@ class MenuViewController: UIViewController {
             controller.managedObjectContext = managedObjectContext
             controller.skipToDetail = (segue.identifier == segueIdentifiers.createNewEntry) ? true : false
             controller.fetchedResultsController = fetchedResultsController
+        } else if segue.identifier == segueIdentifiers.PhotoView {
+            let controller = segue.destinationViewController as! PictureViewController
+            controller.managedObjectContext = managedObjectContext
+            controller.fetchedResultsController = fetchedResultsController
         }
         
     }

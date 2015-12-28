@@ -39,10 +39,11 @@ class TimelineDetailViewController: UIViewController {
             //saving entry to core data
             let entry: Entry?
             if let temp = entryToEdit {
-                print(savedEntry)
+                
                 hudView.text = "Updated"
                 entry = savedEntry ? nil : temp
             } else {
+                print(savedEntry)
                 hudView.text = "Saved"
                 entry = savedEntry ? nil : (NSEntityDescription.insertNewObjectForEntityForName("Entry", inManagedObjectContext: managedObjectContext) as! Entry)
 
@@ -54,8 +55,8 @@ class TimelineDetailViewController: UIViewController {
             entry!.date = container.date
             if let image = container.image {
                 //save the photoID
-                if !entry!.hasPhoto {
-                    entry!.photoID = nil
+                if entry!.hasPhoto {
+                    
                     entry!.photoID = Entry.nextPhotoID()
                 }
                 
@@ -102,7 +103,10 @@ class TimelineDetailViewController: UIViewController {
             super.viewWillDisappear(animated)
             if container.textView.editable && !isChoosingImage{
                 dismissAndSave()
+
             }
+
+        
     }
     deinit {
 

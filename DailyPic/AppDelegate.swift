@@ -12,10 +12,12 @@ import CoreData
 struct segueIdentifiers {
     static let createNewEntry = "createNewEntry"
     static let Timeline = "Timeline"
+    static let PhotoView = "PhotoView"
     static let menuContainer = "menuContainer"
     static let TimelineDetail = "TimelineDetail"
     static let addNewEntry = "addNewEntry"
     static let TimelineDetailContainer = "TimelineDetailContainer"
+    static let photoToDetail = "editPhotoEntry"
 }
 
 let MyManagedObjectContextSaveDidFailNotification = "MyManagedObjectContextSaveDidFailNotification"
