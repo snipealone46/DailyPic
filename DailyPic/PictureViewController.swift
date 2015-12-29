@@ -71,6 +71,9 @@ class PictureViewController: UITableViewController {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
     }
+    override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+        return nil
+    }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let indexPath = sender as! NSIndexPath
         let controller = segue.destinationViewController as! TimelineDetailViewController

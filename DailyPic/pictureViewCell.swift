@@ -23,9 +23,6 @@ class pictureViewCell: UITableViewCell {
         for var i = 0; i < 3; i++ {
             let xPoint = Double(viewHeight) * Double(i) + (Double(i) + 1) * 5
             pics[i].frame = CGRect(x: CGFloat(xPoint), y: 5, width: viewHeight - 5, height: viewHeight - 5)
-            pics[i].userInteractionEnabled = true
-            print("imageTapped_\(i)")
-            pics[i].addGestureRecognizer(UITapGestureRecognizer(target: self, action: Selector("imageTapped_\(i)")))
         }
     }
     var pictures = [UIImageView]()
@@ -54,24 +51,51 @@ class pictureViewCell: UITableViewCell {
     func configureForPhoto(entries: [Entry]) {
         var i = 0
         for entry in entries {
-            let photo = imageForEntry(entry)
+            if let photo = imageForEntry(entry){
             self.pictures[i].image = photo
+                self.pictures[i].userInteractionEnabled = true
+                self.pictures[i].addGestureRecognizer(UITapGestureRecognizer(target: self, action: Selector("imageTapped_\(i)")))
+            } else {
+                self.pictures[i].image = drawCustomImage(CGSize(width: self.bounds.height - 5, height: self.bounds.height - 5)).resizedImageWithBounds(CGSize(width: self.bounds.height - 5, height: self.bounds.height - 5))
+                self.pictures[i].userInteractionEnabled = false
+            }
             i++
         }
-        for picture in pictures {
-            if picture.image == nil {
-                picture.image = UIImage(named: "No Photo")!.resizedImageWithBounds(CGSize(width: self.bounds.height - 5, height: self.bounds.height - 5))
-                picture.image = UIImage(named: "No Photo")!.resizedImageWithBounds(CGSize(width: self.bounds.height - 5, height: self.bounds.height - 5))
-            }
-        }
+//        for picture in pictures {
+//            if picture.image == nil {
+//                picture.hidden = true
+//            }
+//        }
     }
-    func imageForEntry(entry: Entry) -> UIImage {
+    func imageForEntry(entry: Entry) -> UIImage? {
             if entry.hasPhoto, let image = entry.photoImage {
                 return image.resizedImageWithBounds(CGSize(width: self.bounds.height - 5, height: self.bounds.height - 5))
             }else {
-                return UIImage(named: "No Photo")!
+                return nil
             }
 
+    }
+    func drawCustomImage(size: CGSize) -> UIImage {
+        let bounds = CGRect(origin: CGPoint.zero, size: size)
+        let opaque = false
+        let scale: CGFloat = 0
+        UIGraphicsBeginImageContextWithOptions(size, opaque, scale)
+        let context = UIGraphicsGetCurrentContext()
+        
+        CGContextSetStrokeColorWithColor(context, UIColor.whiteColor().CGColor)
+        CGContextSetLineWidth(context, 2.0)
+        
+        CGContextStrokeRect(context, bounds)
+        CGContextBeginPath(context)
+        CGContextMoveToPoint(context, CGRectGetMinX(bounds), CGRectGetMinY(bounds))
+        CGContextAddLineToPoint(context, CGRectGetMaxX(bounds), CGRectGetMaxY(bounds))
+        CGContextMoveToPoint(context, CGRectGetMaxX(bounds), CGRectGetMinY(bounds))
+        CGContextAddLineToPoint(context, CGRectGetMinX(bounds), CGRectGetMaxY(bounds))
+        CGContextStrokePath(context)
+    
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
     }
 
 }
