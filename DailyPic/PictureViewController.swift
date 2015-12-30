@@ -12,30 +12,48 @@ import CoreData
 
 class PictureViewController: UITableViewController {
     struct pictureCellIdentifier {
-        static let pictureViewCell = "pictureCell"
+        static let pictureViewCell = "pictureViewCell"
+        static let loadingCell = "LoadingCell"
     }
     
 //MARK: - outlets and variables
+    var isLoading = true
     var managedObjectContext: NSManagedObjectContext!
     var fetchedResultsController: NSFetchedResultsController!
-    var totalPictureCount = 0
-    
+    var fetchedResultsPhotoOnly: [Entry] = []
+    var isLoadingFix = 1
     override func viewDidLoad() {
         super.viewDidLoad()
-        let cellNib = UINib(nibName: "pictureViewCell", bundle: nil)
+        var cellNib = UINib(nibName: pictureCellIdentifier.pictureViewCell, bundle: nil)
         tableView.registerNib(cellNib, forCellReuseIdentifier: pictureCellIdentifier.pictureViewCell)
+        cellNib = UINib(nibName: pictureCellIdentifier.loadingCell, bundle: nil)
+        tableView.registerNib(cellNib, forCellReuseIdentifier: pictureCellIdentifier.loadingCell)
 //        print(fetchedResultsController.fetchedObjects?.count)
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        if let results = fetchedResultsController.fetchedObjects, queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0){
+            dispatch_async(queue) {
+                self.fetchedResultsPhotoOnly = filterPhotoOnlyResults(results)
+                dispatch_async(dispatch_get_main_queue()){
+                    self.isLoading = false
+                    self.tableView.reloadData()
+                }
+            }
+        } else {
+            self.isLoading = false
+            
+        }
+        print(fetchedResultsPhotoOnly.count)
+        
         tableView.reloadData()
     }
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let numberOfRows = self.fetchedResultsController.fetchedObjects?.count {
-            totalPictureCount = numberOfRows
-            return Int(ceil(Double(totalPictureCount) / 3.0))
+        let isLoadingFix = isLoading ? 1 : 0
+        if fetchedResultsPhotoOnly.count != 0{
+            return Int(ceil(Double(fetchedResultsPhotoOnly.count) / 3.0)) + isLoadingFix
         } else {
-            return 0
+            return 0 + isLoadingFix
         }
     }
     
@@ -43,24 +61,25 @@ class PictureViewController: UITableViewController {
         return view.bounds.width / 3
     }
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        isLoadingFix = isLoading ? 1 : 0
+        if isLoading {
+            
+            if indexPath.row == 0 {
+                let cell = tableView.dequeueReusableCellWithIdentifier(pictureCellIdentifier.loadingCell, forIndexPath: indexPath)
+                let spinner = cell.viewWithTag(100) as! UIActivityIndicatorView
+                spinner.startAnimating()
+                return cell
+            }
+        }
         let cell = tableView.dequeueReusableCellWithIdentifier(pictureCellIdentifier.pictureViewCell, forIndexPath: indexPath) as! pictureViewCell
             cell.cellDelegate = self
-            cell.indexRow = indexPath.row
+            cell.indexRow = indexPath.row - isLoadingFix
             var entries:[Entry] = []
             var picInRow = 3
-            let photoStartIndex = NSIndexPath(forRow: indexPath.row * 3, inSection: 0)
-            picInRow = ((indexPath.row + 1) * 3 > totalPictureCount) ? (totalPictureCount % 3) : 3
+            let photoStartIndex = (indexPath.row - isLoadingFix) * 3
+            picInRow = ((indexPath.row + 1 - isLoadingFix) * 3 > fetchedResultsPhotoOnly.count) ? (fetchedResultsPhotoOnly.count % 3) : 3
             for var i = 0; i < picInRow; i++ {
-
-                let index = NSIndexPath(forRow: photoStartIndex.row + i, inSection: 0)
-                
-                if let entry = self.fetchedResultsController.objectAtIndexPath(index) as? Entry {
-//                            print("*********************************")
-//                            print(entry)
-//                            print("*********************************")
-                    entries.append(entry)
-                }
-                
+                entries.append(fetchedResultsPhotoOnly[photoStartIndex + i])
             }
             cell.configureForPhoto(entries)
         
@@ -75,9 +94,9 @@ class PictureViewController: UITableViewController {
         return nil
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let indexPath = sender as! NSIndexPath
+        let entry = sender as! Entry
         let controller = segue.destinationViewController as! TimelineDetailViewController
-        controller.entryToEdit = fetchedResultsController.objectAtIndexPath(indexPath) as! Entry
+        controller.entryToEdit = entry
         controller.managedObjectContext = managedObjectContext
     }
 //MARK: - support methods
@@ -85,9 +104,42 @@ class PictureViewController: UITableViewController {
 }
 
 extension PictureViewController: pictureViewCelldelegate {
-    func indexOfRowTapped(index: Int) {
-        print(index)
-        let indexPath = NSIndexPath(forRow: index, inSection: 0)
-        performSegueWithIdentifier(segueIdentifiers.photoToDetail, sender: indexPath)
+    func entryPicked(entry: Entry){
+        performSegueWithIdentifier(segueIdentifiers.photoToDetail, sender: entry)
     }
 }
+
+//extension PictureViewController: NSFetchedResultsControllerDelegate {
+//
+//
+//func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+//    switch type {
+//    case .Insert:
+//        self.fetchedResultsPhotoOnly.insert(anObject as! Entry, atIndex: newIndexPath!.row)
+//    case .Delete:
+//        self.fetchedResultsPhotoOnly.removeAtIndex(indexPath!.row)
+//    case .Update:
+//        self.fetchedResultsPhotoOnly[indexPath!.row] = anObject as! Entry
+//    case .Move:
+//        self.fetchedResultsPhotoOnly.removeAtIndex(indexPath!.row)
+//        self.fetchedResultsPhotoOnly.insert(anObject as! Entry, atIndex: newIndexPath!.row)
+//    }
+//    print(self.fetchedResultsPhotoOnly.count)
+//}
+//
+//func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int,
+//    forChangeType type: NSFetchedResultsChangeType) {
+//        switch type {
+//        case .Insert:
+//            print("*** NSFetchedResultsChangeInsert (section)")
+//            self.tableView.insertSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
+//        case .Delete:
+//            print("*** NSFetchedResultsChangeDelete (section)")
+//            self.tableView.deleteSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
+//        case .Update:
+//            print("*** NSFetchedResultsChangeUpdate (section)")
+//        case .Move:
+//            print("*** NSFetchedResultsChangeMove (section)")
+//        } }
+//
+//}

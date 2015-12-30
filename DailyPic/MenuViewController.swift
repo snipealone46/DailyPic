@@ -24,39 +24,53 @@ class MenuViewController: UIViewController {
         return fetchedResultsController
         
     }()
+    var fetchedResultsPhotoOnly = [Entry]()
 //MARK: - built in methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
-        dispatch_async(queue) {
-            self.performFetch()
-            dispatch_async(dispatch_get_main_queue()) {
-                //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                //delete after Delay for production
-//                HudView.afterDelay(1){
-                self.readyToShow()
-                self.container.tableView.reloadData()
-//                }
-                
-                //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            }
-        }
+        lazyLoading(true)
     }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
             readyToShow()
     }
+
     func readyToShow() {
             container.isLoading = false
+            container.totalPhotoNum = self.fetchedResultsPhotoOnly.count
             container.hasFetched = true
    
     }
+    func lazyLoading(performFetch: Bool) {
+        let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+        dispatch_async(queue) {
+            if performFetch{
+                self.performFetch()
+            }
+            if let results = self.fetchedResultsController.fetchedObjects{
+                self.fetchedResultsPhotoOnly = filterPhotoOnlyResults(results)
+            }
+            dispatch_async(dispatch_get_main_queue()) {
+                //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                //delete after Delay for production
+                //                HudView.afterDelay(0.5){
+                self.readyToShow()
+                self.container.tableView.reloadData()
+                //                }
+                
+                //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            }
+        }
+    }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        container.isLoading = true
+        lazyLoading(false)
     }
     func performFetch() {
         do{
             try fetchedResultsController.performFetch()
+            
         }catch {
             fatalCoreDataError(error)
         }
@@ -78,7 +92,10 @@ class MenuViewController: UIViewController {
         } else if segue.identifier == segueIdentifiers.PhotoView {
             let controller = segue.destinationViewController as! PictureViewController
             controller.managedObjectContext = managedObjectContext
+            print("photoOnly: \(self.fetchedResultsPhotoOnly.count)")
+            print("all: \(self.fetchedResultsController.fetchedObjects?.count)")
             controller.fetchedResultsController = fetchedResultsController
+            controller.fetchedResultsPhotoOnly = self.fetchedResultsPhotoOnly
         }
         
     }

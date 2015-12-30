@@ -36,11 +36,12 @@ class TimelineCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    func imageForEntry(entry: Entry) -> UIImage {
+    func imageForEntry(entry: Entry) -> UIImage? {
         if entry.hasPhoto, let image = entry.photoImage {
             return image.resizedImageWithBounds(CGSize(width: 60, height: 60))
+        } else {
+        return nil
         }
-        return UIImage(named: "No Photo")!
     }
     func updateTimeLabels(date: NSDate) {
         let dateString = dateFormatter.stringFromDate(date)
@@ -55,7 +56,16 @@ class TimelineCell: UITableViewCell {
         textView.text = entry.text
         textView.editable = false
         updateTimeLabels(entry.date)
-        photo.image = imageForEntry(entry)
+        if let photo = imageForEntry(entry) {
+            self.photo.hidden = false
+            self.photo.image = photo
+        }
+        else {
+            print("hidden")
+            self.photo.hidden = true
+            
+        }
+        
     }
 
 

@@ -8,12 +8,15 @@
 
 import UIKit
 import CoreData
-
+protocol TimelineViewControllerDelegate: class {
+    func updatePictureOnlyResults(changedEntry: Entry)
+}
 class TimelineViewController: UITableViewController {
 //MARK: - outlets and variables
     var managedObjectContext: NSManagedObjectContext!
     var skipToDetail = false
     var fetchedResultsController: NSFetchedResultsController!
+    var updateDelegate: TimelineViewControllerDelegate?
 //MARK: - built in methods
     override func viewDidLoad() {
         super.viewDidLoad()

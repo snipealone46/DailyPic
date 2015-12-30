@@ -8,7 +8,7 @@
 
 import UIKit
 protocol pictureViewCelldelegate: class {
-    func indexOfRowTapped(index: Int)
+    func entryPicked(entry: Entry)
 }
 private var shortDateFormatter: NSDateFormatter = {
     let formatter = NSDateFormatter()
@@ -28,6 +28,7 @@ class pictureViewCell: UITableViewCell {
         self.pictures = pics
     }
     var pictures = [UIView]()
+    var entryArray = [Entry]()
     var indexRow = 0
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -37,21 +38,22 @@ class pictureViewCell: UITableViewCell {
     
     func imageTapped_0() {
 //            print(indexRow)
-            cellDelegate?.indexOfRowTapped(indexRow * 3)
+            cellDelegate?.entryPicked(self.entryArray[0])
         
     }
     func imageTapped_1() {
         
-            cellDelegate?.indexOfRowTapped(indexRow * 3 + 1)
+            cellDelegate?.entryPicked(self.entryArray[1])
         }
     
     func imageTapped_2() {
         
-            cellDelegate?.indexOfRowTapped(indexRow * 3 + 2)
+            cellDelegate?.entryPicked(self.entryArray[2])
         
     }
     func configureForPhoto(entries: [Entry]) {
         var i = 0
+        self.entryArray = entries
         for entry in entries {
             let imageView = UIImageView()
             let view = self.pictures[i]
@@ -61,12 +63,13 @@ class pictureViewCell: UITableViewCell {
                 view.userInteractionEnabled = true
                 view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: Selector("imageTapped_\(i)")))
                 
-            } else if let text = entry.text{
-                
-                addTextView(view, text: text, dateString: date)
-                view.userInteractionEnabled = true
-                view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: Selector("imageTapped_\(i)")))
             }
+//            else if let text = entry.text{
+//                
+//                addTextView(view, text: text, dateString: date)
+//                view.userInteractionEnabled = true
+//                view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: Selector("imageTapped_\(i)")))
+//            }
                 else {
                 let whitePicture = drawCustomImage(CGSize(width: self.bounds.height - 5, height: self.bounds.height - 5))
                 addImageView(view, imageView: imageView, photo: whitePicture, dateString: date)

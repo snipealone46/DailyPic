@@ -17,6 +17,8 @@ class TimelineDetailViewController: UIViewController {
     var newEntry = false
     var keyboardIsUp = false
     var date = NSDate()
+    //if pressed save and dissmiss view
+    //savedEntry will make sure it will not be saved twice
     var savedEntry = false
     var isChoosingImage = false
     var entryToEdit: Entry!
@@ -35,51 +37,56 @@ class TimelineDetailViewController: UIViewController {
         }
     }
     func dismissAndSave(){
-            let hudView = HudView.hudInView(navigationController!.view, animated: true)
-            //saving entry to core data
-            let entry: Entry?
-            if let temp = entryToEdit {
-                
-                hudView.text = "Updated"
-                entry = savedEntry ? nil : temp
-            } else {
-                print(savedEntry)
-                hudView.text = "Saved"
-                entry = savedEntry ? nil : (NSEntityDescription.insertNewObjectForEntityForName("Entry", inManagedObjectContext: managedObjectContext) as! Entry)
-
-            }
-        if !savedEntry {
-            
-            
-            entry!.text = container.textView.text
-            entry!.date = container.date
+        let hudView = HudView.hudInView(navigationController!.view, animated: true)
+        //saving entry to core data
+        let entry: Entry?
+        //if pressed save and dissmiss view
+        //savedEntry will make sure it will not be saved twice
+        if let temp = entryToEdit {
+            //if editing detail hudView shows updated
+            hudView.text = "Updated"
+            entry = savedEntry ? nil : temp
+        } else {
+            hudView.text = "Saved"
+            entry = savedEntry ? nil : (NSEntityDescription.insertNewObjectForEntityForName("Entry", inManagedObjectContext: managedObjectContext) as! Entry)
+        }
+        
+        if let entry = entry {
+            entry.text = container.textView.text
+            entry.date = container.date
             if let image = container.image {
                 //save the photoID
-                if entry!.hasPhoto {
-                    
-                    entry!.photoID = Entry.nextPhotoID()
+                //if save new photo, abtain a new ID
+                if !entry.hasPhoto {
+                    entry.photoID = Entry.nextPhotoID()
                 }
-                
+                //save the photo
                 if let data = UIImageJPEGRepresentation(image, 0.5) {
                     do{
-                        try data.writeToFile(entry!.photoPath, options: .DataWritingAtomic)
+                        try data.writeToFile(entry.photoPath, options: .DataWritingAtomic)
                     } catch {
                         print("Error writing file: \(error)")
                     }
                 }
+            } else {
+                //if entry did not add photo set the ID to nil
+                entry.photoID = nil
             }
+            //save the entry to core data
             do {
                 try managedObjectContext.save()
             } catch {
                 fatalError("Error: \(error)")
             }
+            //update the indicator to saved
             savedEntry = true
         }
-            newEntry = false
-            HudView.afterDelay(0.6) {
-                hudView.dismissHudView()
-                self.navigationController?.popViewControllerAnimated(true)
-            }
+        newEntry = false
+        //display the hudView at dismiss view
+        HudView.afterDelay(0.6) {
+            hudView.dismissHudView()
+            self.navigationController?.popViewControllerAnimated(true)
+        }
     }
     
 //MARK: - built in methods
@@ -106,7 +113,7 @@ class TimelineDetailViewController: UIViewController {
 
             }
 
-        
+            
     }
     deinit {
 

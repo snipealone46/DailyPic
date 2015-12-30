@@ -22,6 +22,7 @@ class MenuTableViewController: UITableViewController {
     var delegate: indexOptionSelectedDelegate?
     var isLoading = true
     var hasFetched = false
+    var totalPhotoNum = 0
     var fetchedResultsController: NSFetchedResultsController!
 //MARK: - built in methods
     override func viewDidLoad() {
@@ -65,6 +66,7 @@ class MenuTableViewController: UITableViewController {
             cell.listCounter.text = hasFetched ? String(fetchedResultsController.sections![0].numberOfObjects) : String("0")
         case 1:
             cell.listLabel.text = "Photos"
+            cell.listCounter.text = hasFetched ? String(totalPhotoNum) : String("0")
         case 2:
             cell.listLabel.text = "Tags"
         default:

@@ -15,7 +15,7 @@ class Entry: NSManagedObject {
     }
     
     var photoPath: String {
-        assert(photoID != nil, "No photo ID set")
+
         let filename = "Photo-\(photoID!.integerValue).jpg"
         return (applicationDocumentsDirectory as NSString).stringByAppendingPathComponent(filename)
     }
