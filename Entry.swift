@@ -38,7 +38,7 @@ class Entry: NSManagedObject {
         userDefaults.setInteger(currentID + 1, forKey: "PhotoID")
         userDefaults.setInteger(currentID + 1, forKey: "replacePhotoID")
         userDefaults.synchronize()
-        print(newID)
+//        print(newID)
         return newID
     }
     

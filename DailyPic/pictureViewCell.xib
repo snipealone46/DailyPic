@@ -14,39 +14,22 @@
                 <rect key="frame" x="0.0" y="0.0" width="447" height="117.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="d1m-Br-SuW">
+                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="d1m-Br-SuW">
                         <rect key="frame" x="5" y="5" width="437" height="108"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ut9-Cn-dID">
-                                <rect key="frame" x="0.0" y="0.0" width="189" height="108"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8XO-wp-zbj">
-                                <rect key="frame" x="194" y="0.0" width="50" height="108"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sqm-im-4aQ">
-                                <rect key="frame" x="249" y="0.0" width="188" height="108"/>
-                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mvq-y8-bIW">
+                                <rect key="frame" x="0.0" y="0.0" width="143" height="108"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" horizontalHuggingPriority="249" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9hM-2a-71M">
+                                <rect key="frame" x="148" y="0.0" width="142" height="108"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" horizontalHuggingPriority="248" translatesAutoresizingMaskIntoConstraints="NO" id="QWp-69-fbt">
+                                <rect key="frame" x="295" y="0.0" width="143" height="108"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
-                        <constraints>
-                            <constraint firstItem="sqm-im-4aQ" firstAttribute="top" secondItem="d1m-Br-SuW" secondAttribute="top" constant="5" id="5nW-YL-tBF"/>
-                            <constraint firstItem="8XO-wp-zbj" firstAttribute="top" secondItem="d1m-Br-SuW" secondAttribute="top" constant="5" id="6X2-gW-Mdd"/>
-                            <constraint firstItem="8XO-wp-zbj" firstAttribute="leading" secondItem="Ut9-Cn-dID" secondAttribute="trailing" constant="5" id="KMp-vG-vuw"/>
-                            <constraint firstAttribute="trailing" secondItem="sqm-im-4aQ" secondAttribute="trailing" id="Obd-zS-lAd"/>
-                            <constraint firstItem="Ut9-Cn-dID" firstAttribute="leading" secondItem="d1m-Br-SuW" secondAttribute="leading" constant="5" id="bTs-q5-vhn"/>
-                            <constraint firstItem="8XO-wp-zbj" firstAttribute="top" secondItem="d1m-Br-SuW" secondAttribute="top" constant="5" id="c1j-9m-t8r"/>
-                            <constraint firstItem="Ut9-Cn-dID" firstAttribute="top" secondItem="d1m-Br-SuW" secondAttribute="top" constant="5" id="f2N-Hf-seN"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="bTs-q5-vhn"/>
-                                <exclude reference="f2N-Hf-seN"/>
-                                <exclude reference="6X2-gW-Mdd"/>
-                                <exclude reference="KMp-vG-vuw"/>
-                                <exclude reference="c1j-9m-t8r"/>
-                                <exclude reference="5nW-YL-tBF"/>
-                                <exclude reference="Obd-zS-lAd"/>
-                            </mask>
-                        </variation>
                     </stackView>
                 </subviews>
                 <constraints>
@@ -57,9 +40,9 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="picture_1" destination="Ut9-Cn-dID" id="WKq-J0-yBY"/>
-                <outlet property="picture_2" destination="8XO-wp-zbj" id="YpM-kU-dG2"/>
-                <outlet property="picture_3" destination="sqm-im-4aQ" id="rDs-Tr-oLv"/>
+                <outlet property="picture_1" destination="mvq-y8-bIW" id="3HH-Ub-xiI"/>
+                <outlet property="picture_2" destination="9hM-2a-71M" id="x6i-8Z-ywy"/>
+                <outlet property="picture_3" destination="QWp-69-fbt" id="9sB-7b-O3v"/>
             </connections>
             <point key="canvasLocation" x="434.5" y="387"/>
         </tableViewCell>

@@ -24,7 +24,7 @@ class PictureViewController: UITableViewController {
         super.viewDidLoad()
         let cellNib = UINib(nibName: "pictureViewCell", bundle: nil)
         tableView.registerNib(cellNib, forCellReuseIdentifier: pictureCellIdentifier.pictureViewCell)
-        print(fetchedResultsController.fetchedObjects?.count)
+//        print(fetchedResultsController.fetchedObjects?.count)
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -55,9 +55,9 @@ class PictureViewController: UITableViewController {
                 let index = NSIndexPath(forRow: photoStartIndex.row + i, inSection: 0)
                 
                 if let entry = self.fetchedResultsController.objectAtIndexPath(index) as? Entry {
-                            print("*********************************")
-                            print(entry)
-                            print("*********************************")
+//                            print("*********************************")
+//                            print(entry)
+//                            print("*********************************")
                     entries.append(entry)
                 }
                 
