@@ -52,7 +52,7 @@ class pictureViewCell: UITableViewCell {
         var i = 0
         for entry in entries {
             if let photo = imageForEntry(entry){
-            self.pictures[i].image = photo
+                self.pictures[i].image = photo
                 self.pictures[i].userInteractionEnabled = true
                 self.pictures[i].addGestureRecognizer(UITapGestureRecognizer(target: self, action: Selector("imageTapped_\(i)")))
             } else {
@@ -61,11 +61,6 @@ class pictureViewCell: UITableViewCell {
             }
             i++
         }
-//        for picture in pictures {
-//            if picture.image == nil {
-//                picture.hidden = true
-//            }
-//        }
     }
     func imageForEntry(entry: Entry) -> UIImage? {
             if entry.hasPhoto, let image = entry.photoImage {

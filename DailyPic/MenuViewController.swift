@@ -18,7 +18,6 @@ class MenuViewController: UIViewController {
         fetchRequest.entity = entity
         let sortDescriptor = NSSortDescriptor(key: "date", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
-        
         fetchRequest.fetchBatchSize = 20
         let fetchedResultsController = NSFetchedResultsController(
             fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: nil, cacheName: "entrys")

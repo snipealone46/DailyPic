@@ -36,6 +36,17 @@
                             <constraint firstItem="8XO-wp-zbj" firstAttribute="top" secondItem="d1m-Br-SuW" secondAttribute="top" constant="5" id="c1j-9m-t8r"/>
                             <constraint firstItem="Ut9-Cn-dID" firstAttribute="top" secondItem="d1m-Br-SuW" secondAttribute="top" constant="5" id="f2N-Hf-seN"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="bTs-q5-vhn"/>
+                                <exclude reference="f2N-Hf-seN"/>
+                                <exclude reference="6X2-gW-Mdd"/>
+                                <exclude reference="KMp-vG-vuw"/>
+                                <exclude reference="c1j-9m-t8r"/>
+                                <exclude reference="5nW-YL-tBF"/>
+                                <exclude reference="Obd-zS-lAd"/>
+                            </mask>
+                        </variation>
                     </stackView>
                 </subviews>
                 <constraints>
