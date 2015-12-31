@@ -15,7 +15,7 @@ private var dateFormatter: NSDateFormatter = {
     return formatter
 }()
 
-protocol addPhotoDelegate: class {
+protocol TimelineDetailCellDelegate: class {
     func imagePicker()
 }
 class TimelineDetailCell: UITableViewCell {
@@ -30,7 +30,7 @@ class TimelineDetailCell: UITableViewCell {
         }
     }
     @IBOutlet weak var addPhotoButton: UIButton!
-    weak var delegate: addPhotoDelegate?
+    weak var delegate: TimelineDetailCellDelegate?
 
     override func awakeFromNib() {
         super.awakeFromNib()

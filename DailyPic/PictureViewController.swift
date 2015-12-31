@@ -28,7 +28,6 @@ class PictureViewController: UITableViewController {
         tableView.registerNib(cellNib, forCellReuseIdentifier: pictureCellIdentifier.pictureViewCell)
         cellNib = UINib(nibName: pictureCellIdentifier.loadingCell, bundle: nil)
         tableView.registerNib(cellNib, forCellReuseIdentifier: pictureCellIdentifier.loadingCell)
-//        print(fetchedResultsController.fetchedObjects?.count)
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -44,8 +43,6 @@ class PictureViewController: UITableViewController {
             self.isLoading = false
             
         }
-        print(fetchedResultsPhotoOnly.count)
-        
         tableView.reloadData()
     }
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -108,38 +105,3 @@ extension PictureViewController: pictureViewCelldelegate {
         performSegueWithIdentifier(segueIdentifiers.photoToDetail, sender: entry)
     }
 }
-
-//extension PictureViewController: NSFetchedResultsControllerDelegate {
-//
-//
-//func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
-//    switch type {
-//    case .Insert:
-//        self.fetchedResultsPhotoOnly.insert(anObject as! Entry, atIndex: newIndexPath!.row)
-//    case .Delete:
-//        self.fetchedResultsPhotoOnly.removeAtIndex(indexPath!.row)
-//    case .Update:
-//        self.fetchedResultsPhotoOnly[indexPath!.row] = anObject as! Entry
-//    case .Move:
-//        self.fetchedResultsPhotoOnly.removeAtIndex(indexPath!.row)
-//        self.fetchedResultsPhotoOnly.insert(anObject as! Entry, atIndex: newIndexPath!.row)
-//    }
-//    print(self.fetchedResultsPhotoOnly.count)
-//}
-//
-//func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int,
-//    forChangeType type: NSFetchedResultsChangeType) {
-//        switch type {
-//        case .Insert:
-//            print("*** NSFetchedResultsChangeInsert (section)")
-//            self.tableView.insertSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
-//        case .Delete:
-//            print("*** NSFetchedResultsChangeDelete (section)")
-//            self.tableView.deleteSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
-//        case .Update:
-//            print("*** NSFetchedResultsChangeUpdate (section)")
-//        case .Move:
-//            print("*** NSFetchedResultsChangeMove (section)")
-//        } }
-//
-//}

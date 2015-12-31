@@ -20,6 +20,7 @@ class TimelineDetailTableViewController: UITableViewController {
     }
     var date:NSDate!
     var image: UIImage?
+    var cityAndState = ["city": "", "state": ""]
     @IBOutlet weak var textView: UITextView!
     weak var delegate: TimelineDetailDelegate?
     weak var infoBar: TimelineDetailCell!
@@ -80,12 +81,12 @@ class TimelineDetailTableViewController: UITableViewController {
                 self.date = cell.currentTime
                 cell.updateTimeLabels(self.date)
             }
+            
             cell.addPhotoButton.enabled = (self.imageView.image == nil)
             cell.addPhotoButton.setTitle((self.imageView.image == nil) ? "Add Photo" : "Edit Photo"  , forState: .Normal)
-            cell.cityLabel.text = "El Monte"
-            cell.stateLabel.text = "CA"
+            cell.cityLabel.text = cityAndState["city"]
+            cell.stateLabel.text = cityAndState["state"]
             infoBar = cell
-            print(infoBar.cityLabel.text)
             return cell
             }
         default:
@@ -188,7 +189,7 @@ extension TimelineDetailTableViewController: UIImagePickerControllerDelegate, UI
         dismissViewControllerAnimated(true, completion: nil)
     }
 }
-extension TimelineDetailTableViewController: addPhotoDelegate {
+extension TimelineDetailTableViewController: TimelineDetailCellDelegate {
     func imagePicker() {
         delegate?.isChoosingImage(false, isChoosing: true)
         pickPhoto()

@@ -13,7 +13,6 @@ class Entry: NSManagedObject {
     var hasPhoto: Bool {
         return photoID != nil
     }
-    
     var photoPath: String {
 
         let filename = "Photo-\(photoID!.integerValue).jpg"

@@ -11,10 +11,13 @@
 
 import Foundation
 import CoreData
-
+import CoreLocation
 extension Entry {
 
     @NSManaged var text: String?
     @NSManaged var date: NSDate
     @NSManaged var photoID: NSNumber?
+    @NSManaged var latitude: Double
+    @NSManaged var longitude: Double
+    @NSManaged var placemark: CLPlacemark?
 }
