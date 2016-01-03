@@ -96,6 +96,10 @@ class MenuViewController: UIViewController {
             print("all: \(self.fetchedResultsController.fetchedObjects?.count)")
             controller.fetchedResultsController = fetchedResultsController
             controller.fetchedResultsPhotoOnly = self.fetchedResultsPhotoOnly
+        } else if segue.identifier == segueIdentifiers.MapView {
+            let controller = segue.destinationViewController as! MapViewController
+            controller.managedObjectContext = managedObjectContext
+            controller.fetchedResultsController = fetchedResultsController
         }
         
     }

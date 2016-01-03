@@ -8,8 +8,9 @@
 
 import UIKit
 import CoreData
+import MapKit
 
-class Entry: NSManagedObject {
+class Entry: NSManagedObject, MKAnnotation {
     var hasPhoto: Bool {
         return photoID != nil
     }
@@ -22,7 +23,21 @@ class Entry: NSManagedObject {
     var photoImage: UIImage? {
         return UIImage(contentsOfFile: photoPath)
     }
+    //MKAnnotation
+    var coordinate: CLLocationCoordinate2D {
+        return CLLocationCoordinate2DMake(latitude, longitude)
+    }
+    var title: String? {
+        if let text = text {
+            return text
+        } else {
+            return "(No Description)"
+        }
+    }
     
+    var subtitle: String? {
+        return ""
+    }
     class func nextPhotoID() -> Int{
         let userDefaults = NSUserDefaults.standardUserDefaults()
         var currentID = userDefaults.integerForKey("PhotoID")

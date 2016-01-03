@@ -21,6 +21,8 @@
 		071A04871C2910C60074ABFD /* TimelineDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071A04861C2910C60074ABFD /* TimelineDetailViewController.swift */; };
 		071A04891C2911050074ABFD /* TimelineDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071A04881C2911050074ABFD /* TimelineDetailTableViewController.swift */; };
 		07A934BC1C344C7A000BCA0B /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A934BB1C344C7A000BCA0B /* Functions.swift */; };
+		07A934C01C38DDBD000BCA0B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07A934BF1C38DDBD000BCA0B /* MapKit.framework */; };
+		07A934C21C38DDE0000BCA0B /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A934C11C38DDE0000BCA0B /* MapViewController.swift */; };
 		07B2EDF91C2A5B82007811CD /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 07B2EDF71C2A5B82007811CD /* DataModel.xcdatamodeld */; };
 		07B2EDFC1C2A6528007811CD /* Entry+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B2EDFA1C2A6528007811CD /* Entry+CoreDataProperties.swift */; };
 		07B2EDFD1C2A6528007811CD /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B2EDFB1C2A6528007811CD /* Entry.swift */; };
@@ -51,6 +53,8 @@
 		071A04861C2910C60074ABFD /* TimelineDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineDetailViewController.swift; sourceTree = "<group>"; };
 		071A04881C2911050074ABFD /* TimelineDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineDetailTableViewController.swift; sourceTree = "<group>"; };
 		07A934BB1C344C7A000BCA0B /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
+		07A934BF1C38DDBD000BCA0B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		07A934C11C38DDE0000BCA0B /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		07B2EDF81C2A5B82007811CD /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		07B2EDFA1C2A6528007811CD /* Entry+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Entry+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		07B2EDFB1C2A6528007811CD /* Entry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
@@ -69,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07A934C01C38DDBD000BCA0B /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +83,7 @@
 		071A045C1C29074C0074ABFD = {
 			isa = PBXGroup;
 			children = (
+				07A934BF1C38DDBD000BCA0B /* MapKit.framework */,
 				07B2EDFA1C2A6528007811CD /* Entry+CoreDataProperties.swift */,
 				07B2EDFB1C2A6528007811CD /* Entry.swift */,
 				071A04671C29074C0074ABFD /* DailyPic */,
@@ -99,11 +105,13 @@
 				071A04681C29074C0074ABFD /* AppDelegate.swift */,
 				071A046F1C29074C0074ABFD /* Assets.xcassets */,
 				07B2EDF71C2A5B82007811CD /* DataModel.xcdatamodeld */,
+				07A934BB1C344C7A000BCA0B /* Functions.swift */,
 				07B2EE041C2AB3CC007811CD /* HudView.swift */,
 				071A04741C29074C0074ABFD /* Info.plist */,
 				071A04711C29074C0074ABFD /* LaunchScreen.storyboard */,
 				07B2EE061C2AEF4D007811CD /* LoadingCell.xib */,
 				071A046C1C29074C0074ABFD /* Main.storyboard */,
+				07A934C11C38DDE0000BCA0B /* MapViewController.swift */,
 				071A047A1C2908D90074ABFD /* MenuCell.swift */,
 				071A047B1C2908D90074ABFD /* MenuCell.xib */,
 				071A04821C2909430074ABFD /* MenuTableViewController.swift */,
@@ -119,7 +127,6 @@
 				071A04861C2910C60074ABFD /* TimelineDetailViewController.swift */,
 				071A04841C290CF60074ABFD /* TimelineViewController.swift */,
 				07B2EE0A1C2BE339007811CD /* UIImage+Resize.swift */,
-				07A934BB1C344C7A000BCA0B /* Functions.swift */,
 			);
 			path = DailyPic;
 			sourceTree = "<group>";
@@ -214,6 +221,7 @@
 				07A934BC1C344C7A000BCA0B /* Functions.swift in Sources */,
 				07B2EDFD1C2A6528007811CD /* Entry.swift in Sources */,
 				07B2EDF91C2A5B82007811CD /* DataModel.xcdatamodeld in Sources */,
+				07A934C21C38DDE0000BCA0B /* MapViewController.swift in Sources */,
 				071A04691C29074C0074ABFD /* AppDelegate.swift in Sources */,
 				071A047C1C2908D90074ABFD /* MenuCell.swift in Sources */,
 				071A04851C290CF60074ABFD /* TimelineViewController.swift in Sources */,

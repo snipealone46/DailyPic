@@ -18,6 +18,8 @@ struct segueIdentifiers {
     static let addNewEntry = "addNewEntry"
     static let TimelineDetailContainer = "TimelineDetailContainer"
     static let photoToDetail = "editPhotoEntry"
+    static let MapView = "MapView"
+    static let mapToDetail = "mapToDetail"
 }
 
 let MyManagedObjectContextSaveDidFailNotification = "MyManagedObjectContextSaveDidFailNotification"

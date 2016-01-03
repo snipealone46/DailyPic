@@ -68,7 +68,8 @@ class MenuTableViewController: UITableViewController {
             cell.listLabel.text = "Photos"
             cell.listCounter.text = hasFetched ? String(totalPhotoNum) : String("0")
         case 2:
-            cell.listLabel.text = "Tags"
+            cell.listLabel.text = "Map"
+            cell.listCounter.hidden = true
         default:
             break
         }
@@ -89,6 +90,8 @@ class MenuTableViewController: UITableViewController {
             segueTo = segueIdentifiers.Timeline
         case 1:
             segueTo = segueIdentifiers.PhotoView
+        case 2:
+            segueTo = segueIdentifiers.MapView
         default: break
         }
         delegate?.selectedViewController(segueTo)
